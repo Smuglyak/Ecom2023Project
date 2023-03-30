@@ -13,7 +13,7 @@
 class App{
 
     function __construct(){
-
+       // http://localhost/assignment1/index.php?resource=order&action=list
         //Read the resource to determine the controller that needs to be loaded
         if(isset($_GET)){
             if(isset($_GET['resource'])){

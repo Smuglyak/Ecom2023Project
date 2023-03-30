@@ -1,7 +1,11 @@
+<?php
+namespace view;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,7 +48,10 @@
     // $order = new \model\Order();
 
     // $orders = $order->getAll();
-    class OrderList
+
+
+    //my class
+    class Orderlist
     {
         public function render(...$data)
         {
@@ -64,46 +71,12 @@
         <td><button type=\"Submit\"><a href=\"http://localhost/hrapp/index.php?action=edit&resource=user&id={$order['id']}\">Edit</a></button></td>
         </tr>
         ";
-            echo $html;
+            
         }
             $html .= "</table>";
+            echo $html;
     }
 }
-
-    class UsersList
-    {
-        // a function that displays the data which will be called in the controller
-        public function render(...$data)
-        {
-            //initialize this to a data array which starts at index 0
-            $users = $data[0];
-
-            $html = "
-    <table id=\"usersTable\">";
-            $html .=  "<th>Name</th>
-    <th>Phone</th>
-    <th>Email</th>
-    <th>Actions</th>";
-
-            //Loop then fill the table with data from the database
-            foreach ($users as $usr) {
-                $html .= " <tr>
-        <td>{$usr['name']}</td>
-        <td>{$usr['phone']}</td>
-        <td>{$usr['email']}</td>
-        <td>
-        
-        <button type=\"Submit\"><a href=\"http://localhost/hrapp/index.php?action=edit&resource=user&id={$usr['id']}\">Edit</a></button>
-        
-        </td>
-        </tr>
-        ";
-            } //end  foreach
-            $html .= "</table>";
-            echo $html;
-        }
-    }
-
     ?>
 </body>
 

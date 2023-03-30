@@ -16,7 +16,7 @@ class DBConnectionManager
         $this->username = 'root';
         $this->password = '';
         $this->server = 'localhost';
-        $this->dbname = 'assignment1';
+        $this->dbname = 'dbforassignment1';
 
         try {
             $this->dbconnection = new \PDO("mysql:host=$this->server;dbname=$this->dbname", $this->username, $this->password);

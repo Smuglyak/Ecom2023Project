@@ -14,14 +14,17 @@ class OrderController
     {
         if(isset($_GET)){
             if(isset($_GET['action'])){
+
+                
                 //http://localhost/hrapp/controllers/orderController.php?action=[VALUE] that value will be set to $action in the url;
                 $action =  $_GET['action'];
-                //orders.$action will be either orderList or orderEdit  in the url
-                //http://localhost/hrapp/controllers/orderController.php?action=[List] or [ListUpdate]
-                $viewFile = "order" . ucfirst($action);
 
-                //It directly maps the \views\orderList class that looks like a path beacause of adding namespace inside the orderList.php or orderListUpdate.php code
-                $viewClass = "\\view\\" . "order" . ucfirst($action);
+                //orders.$action will be either orderList or orderListUpdate in the url
+                //http://localhost/hrapp/controllers/orderController.php?action=[List] or [ListUpdate]
+                // $viewFile = "order" . ucfirst($action);
+
+                //It directly maps the \views\orderList class that looks like a path beacause of adding namespace(\\view\\, which needs to be specified in the view first line) inside the orderList.php or orderListUpdate.php code
+                $viewClass = "\\view\\" . "Order" . ucfirst($action);
 
                 //Initialize an object from user model class. again this type like a path since this user.php model contains namespace inside to avoid conflicts.
                 $orderModelObject = new \model\Order();
@@ -40,40 +43,20 @@ class OrderController
                         self::index($viewClass, $orderList);
                     }
                     //checks in the URL if action=listUpdate
-                    if ($action == "listUpdate") {
+                    if ($action == "listupdate") {
 
                         //Initialize this variable to get the id value in the URL
-                        $userID = $_GET['id'];
+                        $orderId = $_GET['id'];
                         //Calls this class' method to open the update form based on the URL id
-                        self::edit($viewClass, $orderModelObject, $userID);
+                        self::edit($viewClass, $orderModelObject, $orderId);
                     }
                 } else {
                     echo "This \"$viewClass\" doesn't exists ";
                 }
             }
         }
-
-//old code
-        // if (isset($_GET['id'])) {
-        //     // If an id parameter is present in the URL, update the corresponding order record
-        //     $order = new \model\Order();
-        //     $id = $_GET['id'];
-        //     $name = $_POST['name'];
-        //     $order->updateInstanceById($id, $name);
-
-        //     // Redirect back to the order list page
-        //     header("Location: orderList.php");
-        //     exit;
-        // }
-
-        // If no id parameter is present, show the order list
-        // $order = new \model\Order();
-        // $orders = $order->getAll();
-
-        // include(dirname(__DIR__) . "/view/orderList.php");
-        header("Location: orderList.php");
+       // header("Location: orderList.php");
     }
-    //lol
 
     //An index function that displays the list of data which will be the default page
     public function index($viewObject, $usersList)
@@ -114,4 +97,7 @@ class OrderController
         }
     }
 }
+$OrderController = new \controllers\OrderController();
+
+
 ?>

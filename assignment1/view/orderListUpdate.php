@@ -1,3 +1,6 @@
+<?php
+namespace view;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,38 +44,60 @@
     <?php
 
 
-function updateInstance($orderId, $order)
-{
-    if (isset($_POST['submit'])) {
-        $name = $_POST['name'];
-        $order->updateInstanceById($orderId, $name);
-        header("location: http://localhost/assignment1/view/orderList.php");
-        exit;
-    }
-}
+// function updateInstance($orderId, $order)
+// {
+//     if (isset($_POST['submit'])) {
+//         $name = $_POST['name'];
+//         $order->updateInstanceById($orderId, $name);
+//         header("location: http://localhost/assignment1/view/orderList.php");
+//         exit;
+//     }
+// }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    updateInstance($orderId, $order);
-}
+// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+//     updateInstance($orderId, $order);
+// }
 
 // echo '<pre>';
 // print_r($orders);
 // echo '</pre>';
 
-$html = '<form method="POST" action="">';
-$html .= '<input type="hidden" name="orderId" value="' . $orderId . '">';
-$html .= '<table id="employeesTable">';
-$html .= "<th>id</th>
-          <th>name</th>";
-$html .= "<tr>
-            <td>" . $orders[0]['id'] . "</td>
-            <td><input type='text' id='name' name='name' value=". $orders[0]['name'] ."></td>
-          </tr>";
-$html .= "</table>";
-$html .= "<button type='submit' name='submit'>Submit</button>";
-$html .= '</form>';
+// $html = '<form method="POST" action="">';
+// $html .= '<input type="hidden" name="orderId" value="' . $orderId . '">';
+// $html .= '<table id="employeesTable">';
+// $html .= "<th>id</th>
+//           <th>name</th>";
+// $html .= "<tr>
+//             <td>" . $orders[0]['id'] . "</td>
+//             <td><input type='text' id='name' name='name' value=". $orders[0]['name'] ."></td>
+//           </tr>";
+// $html .= "</table>";
+// $html .= "<button type='submit' name='submit'>Submit</button>";
+// $html .= '</form>';
 
-echo $html;
+
+// echo $html;
+
+
+    class OrderListUpdate
+    {
+        public function render(...$data)
+        {
+            $orders = $data;
+            $html = "<form method=\"post\">";
+            foreach ($orders as $order) {
+                $html .= "  <label for=\"Name\">Name:</label>
+        <input type=\"text\" id=\"name\" name=\"name\" value=\"{$order['name']}\">
+        <br>
+        <button type=\"submit\" name=\"sub\">UPDATE</button>
+       ";
+            } //end foreach
+            $html .= " </form>";
+            echo $html;
+        }
+    }
+
+
 ?>
 
 </body>

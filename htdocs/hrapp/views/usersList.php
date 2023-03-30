@@ -44,7 +44,7 @@ class UsersList{
     
     $html = "
     <table id=\"usersTable\">";
-$html .=  "<th>Name</th>
+    $html .=  "<th>Name</th>
     <th>Phone</th>
     <th>Email</th>
     <th>Actions</th>";
