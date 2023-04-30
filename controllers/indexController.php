@@ -25,7 +25,7 @@ class IndexController{
         $search_query = $_POST['search'];
 
         $game = new \models\Game();
-        $games = $game->searchGame($search_query);
+        // $games = $game->searchGame($search_query);
         
     }
 

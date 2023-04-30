@@ -23,6 +23,7 @@ class GameList{
           padding: 0;
           box-sizing: border-box;
           font-family: \'Press Start 2P\', cursive;
+          font-size: 14px;
         }
     
         body {
@@ -50,6 +51,11 @@ class GameList{
           font-size: 20px;
           text-align: center;
           margin-bottom: 50px;
+        }
+
+        th {
+        padding: 15px;    
+
         }
     
         .button {
